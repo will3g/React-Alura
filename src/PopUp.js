@@ -1,13 +1,13 @@
-import M from 'materialize-css';
+import Mensagem_PopUp from 'materialize-css';
 
-const PopUp = {
+const PopUp = { // Utilizando TOAST do materialize
   exibeMensagem: (status, msg) => {
       console.log("chamou")
     if (status === "success")
-      M.toast({ html: msg, classes: "green", displayLength: 2000 })
+      Mensagem_PopUp.toast({ html: msg, classes: "green", displayLength: 2000 })
     
     if (status === "error")
-      M.toast({ html: msg, classes: "red", displayLength: 2000 })
+      Mensagem_PopUp.toast({ html: msg, classes: "red", displayLength: 2000 })
   }
 }
 export default PopUp;

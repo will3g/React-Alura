@@ -3,7 +3,7 @@ import 'materialize-css/dist/css/materialize.min.css'
 import Tabela from './Tabela';
 import Formulario from './Formulario';
 import Header from './Header';
-
+import PopUp from './PopUp';
 
 class App extends Component {
 
@@ -36,6 +36,7 @@ class App extends Component {
 
     const { autores } = this.state;
 
+    PopUp.exibeMensagem('success', 'Autor removido com sucesso!');
     this.setState({
       autores: autores.filter((autor, posAtual) => {
         return posAtual !== index;

@@ -52,7 +52,7 @@ class Formulario extends Component {
             });
             camposInvalidos.forEach(campo => {
                 
-                PopUp.exibeMensagem('error', campo.message);
+                PopUp.exibeMensagem('error', campo.message); // Utilizando TOAST do materialize
             });
         }
     }

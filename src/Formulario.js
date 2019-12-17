@@ -1,72 +1,112 @@
 import React, { Component } from 'react';
+import FormValidator from './FormValidator';
+import PopUp from './PopUp';
 
-export default class Formulario extends Component {
+class Formulario extends Component {
+
     constructor(props) {
         super(props);
 
-        this.stateInicial = {
+            this.validador = new FormValidator([
+            {
+              campo: 'nome',
+              metodo: 'isEmpty',
+              validoQuando: false,
+              mensagem: 'Entre com um nome'
+            },
+            { 
+              campo: 'livro',
+              metodo: 'isEmpty',
+              validoQuando: false,
+              mensagem: 'Entre com um livro'
+            },
+            { 
+                campo: 'preco',
+                metodo: 'isInt',
+                args: [{min: 0, max: 99999}],
+                validoQuando: true,
+                mensagem: 'Entre com um valor numérico'
+              }
+          ]);
+
+          this.stateInicial = {
             nome: '',
             livro: '',
-            precos: '',
+            preco: '',
+            validacao: this.validador.valido()
         }
 
         this.state = this.stateInicial;
     }
 
     submitFormulario = () => {
-        this.props.escutadorDeSubmit(this.state);
-        this.setState(this.stateInicial);
+        const validacao = this.validador.valida(this.state);
+        if(validacao.isValid){
+            this.props.escutadorDeSubmit(this.state);
+            this.setState(this.stateInicial);
+        }else {
+            const { nome, livro, preco } = validacao;
+            const campos = [nome, livro, preco];
+            const camposInvalidos = campos.filter(elem => {
+                return elem.isInvalid
+            });
+            camposInvalidos.forEach(campo => {
+                
+                PopUp.exibeMensagem('error', campo.message);
+            });
+        }
     }
 
-    escutaInput = event => {
+    escutadorDeInput = event => {
         const { name, value } = event.target;
 
         this.setState({
-            [name] : value
+            [name]: value
         });
     }
 
     render() {
-
         const { nome, livro, preco } = this.state;
-
-        return(
+        return (
             <form>
                 <div className="row">
                     <div className="input-field col s4">
-                        
-                        <input 
-                            id="nome" 
-                            type="text" 
+                        <label className="input-field" htmlFor="nome">Nome</label>
+                        <input
+                            className="validate"
+                            id="nome"
+                            type="text"
                             name="nome"
                             value={nome}
-                            placeholder="Nome"
-                            onChange={this.escutaInput}
-                        />
+                            onChange={this.escutadorDeInput} />
                     </div>
                     <div className="input-field col s4">
-                        <input 
-                            id="livro" 
-                            type="text" 
+                        <label className="input-field" htmlFor="livro">Livro</label>
+                        <input
+                            className="validate"
+                            id="livro"
+                            type="text"
                             name="livro"
                             value={livro}
-                            placeholder="Livro"
-                            onChange={this.escutaInput}
-                        />
+                            onChange={this.escutadorDeInput} />
+
                     </div>
                     <div className="input-field col s4">
-                        <input 
-                            id="preco" 
-                            type="text" 
+                        <label className="input-field col s4" htmlFor="preco">Preço</label>
+                        <input
+                            className="validate"
+                            id="preco"
+                            type="text"
                             name="preco"
                             value={preco}
-                            placeholder="Preço"
-                            onChange={this.escutaInput}
-                        />
+                            onChange={this.escutadorDeInput} />
                     </div>
                 </div>
-                <button type="button" onClick={this.submitFormulario} className="btn waves-effect waves-light indigo lighten-2 mb-10">Salvar</button>
+
+                <button onClick={this.submitFormulario} className="btn waves-effect waves-light indigo lighten-2" type="button">Salvar
+                </button>
             </form>
         );
     }
 }
+export default Formulario

@@ -9,6 +9,8 @@ const LinkWrapper = props => {
     );
 }
 
+export default LinkWrapper;
+
 // Nessa classe estamos envelopando a tag Link do React Router DOM em um único lugar,
 // e criando nossa tag com o nome de LinkWrapper.
 

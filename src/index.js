@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
@@ -9,6 +8,8 @@ import NotFound from './NotFound';
 import Livros from './Livros';
 import Autores from './Autores';
 import Sobre from './Sobre';
+
+import './index.css';
 
 ReactDOM.render(
     <BrowserRouter>

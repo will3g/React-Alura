@@ -1,14 +1,15 @@
 import React from 'react';
+import { Link } from 'react-router-dom'; // A tag link faz com que nossa aplicação se torne Single Page Aplication
 
 const Header = () => {
     return (
         <nav>
             <div className="nav-wrapper indigo lighten-2">
-                <a href="/" className="brand-logo ml-10">Casa do código</a>
+                <Link to="/" className="brand-logo ml-10">Casa do código</Link>
                 <ul id="nav-mobile" className="right">
-                    <li><a href="/autores">Autores</a></li>
-                    <li><a href="/livros">Livros</a></li>
-                    <li><a href="/sobre">Sobre</a></li>
+                    <li><Link to="/autores">Autores</Link></li>
+                    <li><Link to="/livros">Livros</Link></li>
+                    <li><Link to="/sobre">Sobre</Link></li>
                 </ul>
             </div>
         </nav>

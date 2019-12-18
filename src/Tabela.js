@@ -32,7 +32,7 @@ const TableBody = props =>{
     );
 }
 
-class Tabela extends Component{
+export default class Tabela extends Component{
     render(){
         const { autores, removeAutor } = this.props;
 
@@ -44,4 +44,3 @@ class Tabela extends Component{
         );
     }
 }
-export default Tabela;

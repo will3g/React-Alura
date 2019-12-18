@@ -1,14 +1,19 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Header from './Header';
 
-const Autores = () => {
+class Autores extends Component {
+    render() {
+        const { autores } = this.props;
 
-    return(
-        <>
-            <Header/>
-            <h1>Autores</h1>
-        </>
-    );
+        console.log(autores);
+
+        return (
+            <>
+                <Header />
+                <h1>Autores</h1>
+            </>
+        );
+    }
 }
 
 export default Autores;

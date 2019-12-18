@@ -5,7 +5,7 @@ import Formulario from './Formulario';
 import Header from './Header';
 import PopUp from './PopUp';
 
-class App extends Component {
+export default class App extends Component {
 
   state = {
     autores: [
@@ -48,6 +48,7 @@ class App extends Component {
   escutadorDeSubmit = autor => {
     this.setState({ autores: [...this.state.autores, autor] });
   }
+  
   render() {
     return (
       <>
@@ -61,5 +62,3 @@ class App extends Component {
     );
   }
 }
-
-export default App;

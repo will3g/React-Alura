@@ -1,6 +1,6 @@
 import React from 'react';
 
-import LinkWrapper from './LinkWrapper';
+import LinkWrapper from '../../pages/LinkWrapper';
 
 // import { Link } from 'react-router-dom'; // A tag link faz com que nossa aplicação se torne Single Page Aplication
 

@@ -2,7 +2,6 @@ import Mensagem_PopUp from 'materialize-css';
 
 const PopUp = { // Utilizando TOAST do materialize
   exibeMensagem: (status, msg) => {
-      console.log("chamou")
     if (status === "success")
       Mensagem_PopUp.toast({ html: msg, classes: "green", displayLength: 2000 })
     

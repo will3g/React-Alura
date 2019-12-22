@@ -3,13 +3,13 @@ import ReactDOM from 'react-dom';
 
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
-import App from './App';
-import NotFound from './NotFound';
-import Livros from './Livros';
-import Autores from './Autores';
-import Sobre from './Sobre';
+import App from './pages/Home/App';
+import NotFound from './pages/NotFound/NotFound';
+import Livros from './pages/Livros/Livros';
+import Autores from './pages/Autores/Autores';
+import Sobre from './pages/Sobre/Sobre';
 
-import './index.css';
+import './style/index.css';
 
 ReactDOM.render(
     <BrowserRouter>
